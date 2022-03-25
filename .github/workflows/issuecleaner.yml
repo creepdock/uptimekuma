@@ -1,7 +1,5 @@
 name: Issue Cleaner
 on:
-  push:
-    branches: [ main ]
   issues:
     types: [opened]
 jobs:
