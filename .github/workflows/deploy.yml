@@ -1,7 +1,5 @@
-name: Docker
+name: Build a new Docker Image
 on:
-  push:
-    branches: [ main ]
   issues:
     types: [opened]
 env:
@@ -11,7 +9,15 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
+  IssueCleaner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close Issue
+        uses: peter-evans/close-issue@v2
+        with:
+          comment: This issue has been received successfully.
+  DockerBuilder:
+    needs: IssueCleaner
     runs-on: ubuntu-latest
     permissions:
       contents: read
