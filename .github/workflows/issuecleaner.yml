@@ -1,11 +1,14 @@
+name: Issue Cleaner
 on:
+  push:
+    branches: [ main ]
   issues:
     types: [opened]
 jobs:
   titlePrefixCheck:
     runs-on: ubuntu-latest
     steps:
-        name: Close Issue
+      - name: Close Issue
         uses: peter-evans/close-issue@v2
         with:
           comment: This issue has been received successfully.
