@@ -3,7 +3,7 @@ services:
     uptimekuma:
         restart: unless-stopped
         container_name: uptimekuma
-        image: ghcr.io/creepdock/uptimekuma
+        image: ghcr.io/creepdock/latestkuma
         ports:
             - 3001:3001
         volumes:
