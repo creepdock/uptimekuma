@@ -1,0 +1,10 @@
+version: '3'
+services:
+    uptimekuma:
+        restart: unless-stopped
+        container_name: uptimekuma
+        image: ghcr.io/creepdock/uptimekuma
+        ports:
+            - 3001:3001
+        volumes:
+            - ./data/:/app/data/
