@@ -1,4 +1,4 @@
-FROM debian:bullseyev AS build
+FROM debian:bullseye AS build
 
 WORKDIR /app
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
