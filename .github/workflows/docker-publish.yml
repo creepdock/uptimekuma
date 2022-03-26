@@ -66,4 +66,4 @@ jobs:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ghcr.io/creepdock/uptimekuma:latest
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/armhf,linux/arm64
