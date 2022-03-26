@@ -10,7 +10,7 @@ RUN apt install git bash curl wget gnupg chromium -y --no-recommends
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt install nodejs -y --no-recommends
-
+RUN npm i npm -g
 RUN git clone https://github.com/louislam/uptime-kuma.git .
 RUN npm i
 RUN npm i vite -g
