@@ -1,4 +1,4 @@
-name: Docker (MultiArch)
+name: Docker (arm64)
 on:
   push:
     branches: [ main ]
