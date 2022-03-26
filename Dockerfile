@@ -6,10 +6,10 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
 RUN apt update
 RUN apt upgrade -y
 
-RUN apt install git bash curl wget gnupg chromium -y --no-recommend
+RUN apt install git bash curl wget gnupg chromium -y -–no-install-recommends
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt install nodejs -y --no-recommend
+RUN apt install nodejs -y -–no-install-recommends
 RUN npm i npm -g
 RUN git clone https://github.com/louislam/uptime-kuma.git .
 RUN npm i
