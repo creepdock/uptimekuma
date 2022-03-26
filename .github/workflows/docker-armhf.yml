@@ -1,4 +1,4 @@
-name: Docker (MultiArch)
+name: Docker (armhf)
 on:
   push:
     branches: [ main ]
