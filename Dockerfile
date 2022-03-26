@@ -1,4 +1,4 @@
-FROM debian:bullseye AS build
+FROM debian:bullseye
 
 WORKDIR /app
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
@@ -9,7 +9,7 @@ RUN apt upgrade -y
 RUN apt install git bash curl wget gnupg chromium -y --no-install-recommends
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt install nodejs -y
+RUN apt install nodejs npm -y --no-install-recommends
 RUN git clone https://github.com/louislam/uptime-kuma.git .
 RUN npm i
 RUN npm i vite -g
