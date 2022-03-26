@@ -13,7 +13,31 @@ env:
   IMAGE_NAME: creepdock/uptimekuma
 
 jobs:
+  auto-test:
+    runs-on: ubuntu-20.04
+    steps:
+    - run: git clone https://github.com/louislam/uptime-kuma.git .
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - run: npm i
+    - run: npm i vite -g
+    - run: npm run build
+    - run: npm test
+      env:
+        HEADLESS_TEST: 1
+  IssueCleaner:
+    runs-on: ubuntu-latest
+    if: github.event == 'issue'
+    steps:
+      - name: Close Issue
+        uses: peter-evans/close-issue@v2
+        with:
+          comment: This issue has been received successfully.
   build:
+    needs: auto-test
     runs-on: ubuntu-latest
     if: github.actor == 'MichelBaie'
     permissions:
