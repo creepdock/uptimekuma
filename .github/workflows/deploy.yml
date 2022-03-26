@@ -2,6 +2,7 @@ name: Build a new Docker Image
 on:
   issues:
     types: [opened]
+  workflow_dispatch:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
@@ -9,6 +10,21 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  auto-test:
+    runs-on: ubuntu-20.04
+    steps:
+    - run: git clone https://github.com/louislam/uptime-kuma.git .
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - run: npm i
+    - run: npm i vite -g
+    - run: npm run build
+    - run: npm test
+      env:
+        HEADLESS_TEST: 1
   IssueCleaner:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +34,7 @@ jobs:
           comment: This issue has been received successfully.
   DockerBuilder:
     if: github.event.issue.user.login == 'MichelBaie'
-    needs: IssueCleaner
+    needs: auto-test
     runs-on: ubuntu-latest
     permissions:
       contents: read
