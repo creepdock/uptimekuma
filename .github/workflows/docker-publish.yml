@@ -15,7 +15,6 @@ env:
 jobs:
   IssueCleaner:
     runs-on: ubuntu-latest
-    if: github.event == 'issue'
     steps:
       - name: Close Issue
         uses: peter-evans/close-issue@v2
